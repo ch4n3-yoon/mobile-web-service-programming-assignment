@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Service programming blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap3@3.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-8">
+            <h1><a href="/">Web Service programming blog</a></h1>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="col-md-4 d-flex justify-content-end align-items-center">
+                <a href="{% url 'post_new' %}" class="top-menu">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Write a post
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
