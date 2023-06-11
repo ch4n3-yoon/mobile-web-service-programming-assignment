@@ -12,6 +12,4 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('title', 'text', 'created_date', 'published_date', 'image', 'url')
 
     def create(self, validated_data):
-        print("FUCK")
-        print(validated_data)
         return PostModel.objects.create(**validated_data)
