@@ -3,9 +3,16 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
+from rest_framework import viewsets
 
 from blog.models import Post as PostModel
 from blog.forms import PostForm
+from blog.serializers import PostSerializer
+
+
+class IntruderImage(viewsets.ModelViewSet):
+    queryset = PostModel.objects.all()
+    serializer_class = PostSerializer
 
 
 def post_list(request):
